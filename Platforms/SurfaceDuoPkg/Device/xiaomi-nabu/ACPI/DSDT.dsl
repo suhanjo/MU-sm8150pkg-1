@@ -43,7 +43,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
     Scope (\_SB)
     {
         Name (PSUB, "MTP08150")
-		//SD860 has same cpuid as SM8150v2
+        //SD860 has same cpuid as SM8150v2
         Name (SOID, 0x00000153)
         Name (STOR, 0x00000001)
         Name (SIDS, "SM8150")
@@ -69,7 +69,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
         Name (TDTV, 0x6654504D)
         Name (TCMA, 0x9E400000)
         Name (TCML, 0x01400000)
-        Name (SOSI, 0x0000000086007228)
+        //Name (SOSI, 0x0000000086007228)
+        Name (PRSI, Buffer() {0x53, 0x4F, 0x53, 0x49, 0x0E, 0x28, 0x72, 0x00, 0x86, 0x00, 0x00, 0x00, 0x00, 0x0B})
         Name (PRP0, 0xFFFFFFFF)
         Name (PRP1, 0xFFFFFFFF)
         Name (PRP2, 0xFFFFFFFF)
@@ -3260,8 +3261,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             {
                 Return (APCE) /* \_SB_.PEP0.APCE */
             }
-			//TODO: Add audio resources
-			Name (APCE, Package (0x00){})
+            //TODO: Add audio resources
+            Name (APCE, Package (0x00){})
 
             Name (APCC, Package (0x03)
             {
@@ -46099,15 +46100,15 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 }
             })
         }
-		
-		Scope (\_SB.PEP0)
+        
+        Scope (\_SB.PEP0)
         {
             Method (PEMD, 0, NotSerialized)
             {
                 Return (PEME) /* \_SB_.PEP0.PEME */
             }
-			//TODO: PCIE Resources
-			Name (PEME, Package (0x00){})
+            //TODO: PCIE Resources
+            Name (PEME, Package (0x00){})
 
             Name (PEMC, Package (0x08)
             {
@@ -47929,8 +47930,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             {
                 Return (CPXE) /* \_SB_.PEP0.CPXE */
             }
-			//TODO: CAMERA RELATED?
-			Name (CPXE, Package (0x00){})
+            //TODO: CAMERA RELATED?
+            Name (CPXE, Package (0x00){})
 
             Name (CPXC, Package (0x05)
             {
@@ -53300,8 +53301,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             {
                 Return (CPCE) /* \_SB_.PEP0.CPCE */
             }
-			//TODO: CAMERA MODULES RELATED?
-			Name (CPCE, Package (0x00){})
+            //TODO: CAMERA MODULES RELATED?
+            Name (CPCE, Package (0x00){})
 
             Name (CPC0, Package (0x01)
             {
@@ -60350,9 +60351,9 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             }
         }
 
-		//
-		//  PEP resources for buses
-		//
+        //
+        //  PEP resources for buses
+        //
         Scope (\_SB.PEP0)
         {
             Method (BSMD, 0, NotSerialized)
