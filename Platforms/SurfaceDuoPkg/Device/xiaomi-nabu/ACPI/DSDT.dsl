@@ -63436,7 +63436,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             Alias (\_SB.PSUB, _SUB)
             Alias (\_SB.SIDT, _IDT)
             Name (_UID, Zero)  // _UID: Unique ID
-            //Name (_CLS, 0x0003000000000000)  // _CLS: Class Code
+            Name (_CLS, 0x0003000000000000)  // _CLS: Class Code
             Device (MON0)
             {
                 Method (_ADR, 0, NotSerialized)  // _ADR: Address
