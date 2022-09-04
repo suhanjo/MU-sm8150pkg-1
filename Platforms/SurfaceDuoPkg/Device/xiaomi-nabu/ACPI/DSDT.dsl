@@ -60346,6 +60346,35 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 Return (RBUF) /* \_SB_.SPI4._CRS.RBUF */
             }
         }
+		
+        Device (SP18)
+        {
+            Name (_HID, "QCOM040F")  // _HID: Hardware ID
+            Alias (\_SB.PSUB, _SUB)
+            Name (_UID, 0x12)  // _UID: Unique ID
+            Name (_DEP, Package (0x03)  // _DEP: Dependencies
+            {
+                \_SB.PEP0, 
+                \_SB.QGP2, 
+                \_SB.MMU0
+            })
+            Name (_CCA, Zero)  // _CCA: Cache Coherency Attribute
+            Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+            {
+                Name (RBUF, ResourceTemplate ()
+                {
+                    Memory32Fixed (ReadWrite,
+                        0x00C84000,         // Address Base
+                        0x00004000,         // Address Length
+                        )
+                    Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                    {
+                        0x00000267,
+                    }
+                })
+                Return (RBUF) /* \_SB_.SP18._CRS.RBUF */
+            }
+        }
 
         //
         //  PEP resources for buses
@@ -60357,7 +60386,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 Return (BSRC) /* \_SB_.PEP0.BSRC */
             }
 
-            Name (BSRC, Package (0x07)
+            Name (BSRC, Package (0x08)
             {
                 Package (0x05)
                 {
@@ -62205,6 +62234,255 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                             Package (0x06)
                             {
                                 0x93, 
+                                Zero, 
+                                0x02, 
+                                Zero, 
+                                One, 
+                                Zero
+                            }
+                        }
+                    }
+                },
+				
+				Package (0x07)
+				{
+                    "DEVICE", 
+                    "\\_SB.SP18", 
+                    Package (0x04)
+                    {
+                        "COMPONENT", 
+                        Zero, 
+                        Package (0x02)
+                        {
+                            "FSTATE", 
+                            Zero
+                        }, 
+
+                        Package (0x03)
+                        {
+                            "DISCOVERABLE_PSTATE", 
+                            "CLOCK", 
+                            "gcc_qupv3_wrap2_s1_clk"
+                        }
+                    }, 
+
+                    Package (0x0A)
+                    {
+                        "DSTATE", 
+                        Zero, 
+                        Package (0x02)
+                        {
+                            "BUSARB", 
+                            Package (0x05)
+                            {
+                                0x03, 
+                                "ICBID_MASTER_QUP_2", 
+                                "ICBID_SLAVE_EBI1", 
+                                0x0927C000, 
+                                0x0682
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "BUSARB", 
+                            Package (0x05)
+                            {
+                                0x03, 
+                                "ICBID_MASTER_APPSS_PROC", 
+                                "ICBID_SLAVE_QUP_2", 
+                                0x08D24D00, 
+                                0x02FAF080
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "CLOCK", 
+                            Package (0x02)
+                            {
+                                "gcc_qupv3_wrap_2_m_ahb_clk", 
+                                One
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "CLOCK", 
+                            Package (0x02)
+                            {
+                                "gcc_qupv3_wrap2_s1_clk", 
+                                One
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x17, 
+                                One, 
+                                0x02, 
+                                Zero, 
+                                One, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x18, 
+                                One, 
+                                0x02, 
+                                One, 
+                                One, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x19, 
+                                One, 
+                                0x02, 
+                                One, 
+                                One, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x1A, 
+                                One, 
+                                0x02, 
+                                One, 
+                                One, 
+                                Zero
+                            }
+                        }
+                    }, 
+
+                    Package (0x02)
+                    {
+                        "DSTATE", 
+                        One
+                    }, 
+
+                    Package (0x02)
+                    {
+                        "DSTATE", 
+                        0x02
+                    }, 
+
+                    Package (0x0A)
+                    {
+                        "DSTATE", 
+                        0x03, 
+                        Package (0x02)
+                        {
+                            "CLOCK", 
+                            Package (0x02)
+                            {
+                                "gcc_qupv3_wrap2_s1_clk", 
+                                0x02
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "CLOCK", 
+                            Package (0x02)
+                            {
+                                "gcc_qupv3_wrap_2_m_ahb_clk", 
+                                0x02
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "BUSARB", 
+                            Package (0x05)
+                            {
+                                0x03, 
+                                "ICBID_MASTER_APPSS_PROC", 
+                                "ICBID_SLAVE_QUP_2", 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "BUSARB", 
+                            Package (0x05)
+                            {
+                                0x03, 
+                                "ICBID_MASTER_QUP_2", 
+                                "ICBID_SLAVE_EBI1", 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x17, 
+                                Zero, 
+                                0x02, 
+                                Zero, 
+                                One, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x18, 
+                                Zero, 
+                                0x02, 
+                                Zero, 
+                                One, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x19, 
+                                Zero, 
+                                0x02, 
+                                Zero, 
+                                One, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x1A, 
                                 Zero, 
                                 0x02, 
                                 Zero, 
