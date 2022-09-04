@@ -60346,7 +60346,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 Return (RBUF) /* \_SB_.SPI4._CRS.RBUF */
             }
         }
-		
+        
         Device (SP18)
         {
             Name (_HID, "QCOM040F")  // _HID: Hardware ID
@@ -62243,9 +62243,9 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                         }
                     }
                 },
-				
-				Package (0x07)
-				{
+                
+                Package (0x07)
+                {
                     "DEVICE", 
                     "\\_SB.SP18", 
                     Package (0x04)
@@ -62718,7 +62718,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 \_SB.RPEN, 
                 \_SB.SSDD
             })
-            Name (_HID, "QCOM041E")  // _HID: Hardware ID
+            //QCOM041E
+            Name (_HID, "QCOM9999")  // _HID: Hardware ID
             Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
             {
                 Name (RBUF, ResourceTemplate ()
@@ -76465,7 +76466,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 Notify (\_SB.GPU0, 0x92) // Device-Specific
             }
         }
-		
+        
         Device (PCI0)
         {
             Name (_DEP, Package (0x02)  // _DEP: Dependencies
