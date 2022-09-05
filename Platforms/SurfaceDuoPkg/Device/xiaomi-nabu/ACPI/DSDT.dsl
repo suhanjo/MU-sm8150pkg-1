@@ -63932,7 +63932,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                                 Package (0x02)
                                 {
                                     "GmemSize", 
-                                    0x00200000
+                                    0x00100000
                                 }, 
 
                                 Package (0x02)
@@ -82266,8 +82266,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 }
             }
 
-            Name (_HID, "QCOM0497")
-            //Alias (URSI, _HID)
+            Alias (URSI, _HID)
             Name (_CID, "PNP0CA1")  // _CID: Compatible ID
             Alias (\_SB.PSUB, _SUB)
             Name (_UID, Zero)  // _UID: Unique ID
