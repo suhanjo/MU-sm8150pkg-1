@@ -39135,7 +39135,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                             }
                         }, 
 
-//TODO: fix LDO10A for ufs (it's set to minimum voltage)
                         Package (0x02)
                         {
                             "PMICVREGVOTE", 
@@ -46101,10 +46100,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
         {
             Method (PEMD, 0, NotSerialized)
             {
-                Return (PEME) /* \_SB_.PEP0.PEME */
+                Return (PEMC) /* \_SB_.PEP0.PEMC */
             }
-            //TODO: PCIE Resources
-            Name (PEME, Package (0x00){})
 
             Name (PEMC, Package (0x08)
             {
@@ -47926,7 +47923,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             {
                 Return (CPXE) /* \_SB_.PEP0.CPXE */
             }
-            //TODO: CAMERA RELATED?
+            //TODO: Add camera Exa-SoC resources
             Name (CPXE, Package (0x00){})
 
             Name (CPXC, Package (0x05)
@@ -53297,7 +53294,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             {
                 Return (CPCE) /* \_SB_.PEP0.CPCE */
             }
-            //TODO: CAMERA MODULES RELATED?
+            //TODO: Add camera resources
             Name (CPCE, Package (0x00){})
 
             Name (CPC0, Package (0x01)
@@ -62718,8 +62715,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 \_SB.RPEN, 
                 \_SB.SSDD
             })
-            //QCOM041E
-            Name (_HID, "QCOM9999")  // _HID: Hardware ID
+            Name (_HID, "QCOM041E")  // _HID: Hardware ID
             Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
             {
                 Name (RBUF, ResourceTemplate ()
@@ -63079,7 +63075,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
 
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
-                Return (0x0F)
+                //AMSS disabled until modem crash fixed
+                Return (Zero)
             }
         }
 
