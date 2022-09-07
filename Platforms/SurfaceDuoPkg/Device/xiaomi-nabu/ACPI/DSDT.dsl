@@ -55,8 +55,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
         Name (SIDT, 0x00000001)
         Name (SOSN, 0x00000407D4506A22)
         Name (PLST, 0x00000000)
-        Name (RMTB, 0x85D00000)
-        Name (RMTX, 0x00200000)
+        Name (RMTB, 0xC0000000)
+        Name (RMTX, 0x00300000)
         Name (RFMB, 0x00000000)
         Name (RFMS, 0x00000000)
         Name (RFAB, 0x00000000)
@@ -63076,8 +63076,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
 
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
-                //AMSS disabled until modem crash fixed
-                Return (Zero)
+                Return (0x0F)
             }
         }
 
