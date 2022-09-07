@@ -63069,7 +63069,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 }
                 Else
                 {
-                    Return (\_SB.PSUB)
+					//set MTPA8150 to enable non-modem registry values for Mi Pad 5
+                    Return ("MTPA8150")
                 }
             }
 
@@ -64467,200 +64468,129 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                             }
                         }, 
 
-                        Package (0x22)
+                        Package (0x16)
                         {
                             "PRIMARY_SOURCE_MODES", 
-                            0x20, 
-                            Package (0x02)
+                            0x14, 
+                            /* 16:10 */
+							Package (0x02)
                             {
                                 0x0280, 
-                                0x01E0
-                            }, 
+                                0x0400
+                            },
 
-                            Package (0x02)
+							Package (0x02)
                             {
-                                0x0280, 
-                                0x0168
-                            }, 
+                                0x02D0, 
+                                0x0480
+                            },
 
-                            Package (0x02)
+							Package (0x02)
                             {
                                 0x0320, 
-                                0x0258
-                            }, 
+                                0x0500
+                            },
 
-                            Package (0x02)
+							Package (0x02)
                             {
-                                0x03C0, 
-                                0x021C
-                            }, 
+                                0x0384, 
+                                0x05A0
+                            },
 
-                            Package (0x02)
+							Package (0x02)
                             {
-                                0x0500, 
-                                0x02D0
-                            }, 
+                                0x041A, 
+                                0x0690
+                            },
 
-                            Package (0x02)
+							Package (0x02)
                             {
-                                0x0500, 
-                                0x0438
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0400, 
-                                0x0300
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0480, 
-                                0x0300
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0500, 
-                                0x0300
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0550, 
-                                0x0300
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0556, 
-                                0x0300
-                            }, 
+                                0x04B0, 
+                                0x0780
+                            },
 
                             Package (0x02)
                             {
                                 0x0640, 
-                                0x0384
-                            }, 
-
-                            Package (0x02)
+                                0x0A00
+                            },
+							/* 16:9 */
+							Package (0x02)
                             {
-                                0x0500, 
+                                0x0258, 
                                 0x0400
-                            }, 
+                            },
 
-                            Package (0x02)
+							Package (0x02)
                             {
-                                0x0780, 
-                                0x0438
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0780, 
-                                0x04B0
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0780, 
+                                0x02D0, 
                                 0x0500
-                            }, 
+                            },
+
+							Package (0x02)
+                            {
+                                0x0300, 
+                                0x0556
+                            },
+
+							Package (0x02)
+                            {
+                                0x0384, 
+                                0x0640
+                            },
+
+							Package (0x02)
+                            {
+                                0x0438, 
+                                0x0780
+                            },
 
                             Package (0x02)
                             {
-                                0x0800, 
-                                0x0438
-                            }, 
-
-                            Package (0x02)
+                                0x05A0, 
+                                0x0A00
+                            },
+							/* 4:3 */
+							Package (0x02)
                             {
-                                0x0800, 
+                                0x0258, 
+                                0x0320
+                            },
+
+							Package (0x02)
+                            {
+                                0x0300, 
+                                0x0400
+                            },
+
+							Package (0x02)
+                            {
+                                0x0360, 
                                 0x0480
-                            }, 
+                            },
+
+							Package (0x02)
+                            {
+                                0x03C0, 
+                                0x0500
+                            },
 
                             Package (0x02)
                             {
-                                0x0800, 
-                                0x0600
-                            }, 
+                                0x041A, 
+                                0x0578
+                            },
 
-                            Package (0x02)
+							Package (0x02)
                             {
-                                0x0A00, 
-                                0x0438
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0A00, 
+                                0x04B0, 
                                 0x0640
-                            }, 
-
-                            Package (0x02)
+                            },
+							
+							Package (0x02)
                             {
-                                0x0A00, 
-                                0x05A0
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0A00, 
+                                0x0600, 
                                 0x0800
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0C80, 
-                                0x0708
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0C80, 
-                                0x0960
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0C80, 
-                                0x0800
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0D70, 
-                                0x05A0
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0F00, 
-                                0x0438
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0F00, 
-                                0x0640
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0F00, 
-                                0x0960
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x0F00, 
-                                0x0870
-                            }, 
-
-                            Package (0x02)
-                            {
-                                0x1000, 
-                                0x0870
                             }
                         }
                     }, 
