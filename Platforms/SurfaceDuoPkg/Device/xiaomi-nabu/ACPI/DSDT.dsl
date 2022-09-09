@@ -79453,6 +79453,10 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                         )
                     Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
                     {
+                        0x00000115,
+                    }
+                    Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                    {
                         0x00000116,
                     }
                     Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
@@ -82263,6 +82267,10 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
 
         Device (USBA)
         {
+            Name (_DEP, Package (One)  // _DEP: Dependencies
+            {
+                \_SB.URS0
+            })
             Name (_HID, "FSA4480")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
             Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
