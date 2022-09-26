@@ -60260,11 +60260,11 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             }
         }
         
-        Device (SP18)
+        Device (SP19)
         {
             Name (_HID, "QCOM040F")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
-            Name (_UID, 0x12)  // _UID: Unique ID
+            Name (_UID, 0x13)  // _UID: Unique ID
             Name (_DEP, Package (0x03)  // _DEP: Dependencies
             {
                 \_SB.PEP0, 
@@ -60285,7 +60285,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                         0x00000267,
                     }
                 })
-                Return (RBUF) /* \_SB_.SP18._CRS.RBUF */
+                Return (RBUF) /* \_SB_.SP19._CRS.RBUF */
             }
         }
 
@@ -61596,7 +61596,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 Package (0x07)
                 {
                     "DEVICE", 
-                    "\\_SB.SP18", 
+                    "\\_SB.SP19", 
                     Package (0x04)
                     {
                         "COMPONENT", 
@@ -61658,66 +61658,68 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                         Package (0x02)
                         {
                             "CLOCK", 
-                            Package (0x02)
+                            Package (0x04)
                             {
                                 "gcc_qupv3_wrap2_s1_clk", 
-                                One
+                                0x08,
+                                0x0124F800,
+                                0x04
                             }
                         }, 
 
                         Package (0x02)
                         {
-                            "TLMMGPIO", 
+                            "TLMMGPIO",
                             Package (0x06)
                             {
-                                0x17, 
-                                One, 
-                                0x02, 
-                                Zero, 
-                                One, 
-                                Zero
+                                0x17,
+                                One,
+                                One,
+                                Zero,
+                                One,
+                                0x02
                             }
-                        }, 
+                        },
 
                         Package (0x02)
                         {
-                            "TLMMGPIO", 
+                            "TLMMGPIO",
                             Package (0x06)
                             {
-                                0x18, 
-                                One, 
-                                0x02, 
-                                One, 
-                                One, 
-                                Zero
+                                0x18,
+                                One,
+                                One,
+                                One,
+                                One,
+                                0x02
                             }
-                        }, 
+                        },
 
                         Package (0x02)
                         {
-                            "TLMMGPIO", 
+                            "TLMMGPIO",
                             Package (0x06)
                             {
-                                0x19, 
-                                One, 
-                                0x02, 
-                                One, 
-                                One, 
-                                Zero
+                                0x19,
+                                One,
+                                One,
+                                One,
+                                One,
+                                0x02
                             }
-                        }, 
+                        },
 
                         Package (0x02)
                         {
-                            "TLMMGPIO", 
+                            "TLMMGPIO",
                             Package (0x06)
                             {
-                                0x1A, 
-                                One, 
-                                0x02, 
-                                One, 
-                                One, 
-                                Zero
+                                0x1A,
+                                One,
+                                One,
+                                One,
+                                One,
+                                0x02
                             }
                         }
                     }, 
@@ -61786,57 +61788,57 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
 
                         Package (0x02)
                         {
-                            "TLMMGPIO", 
+                            "TLMMGPIO",
                             Package (0x06)
                             {
-                                0x17, 
-                                Zero, 
-                                0x02, 
-                                Zero, 
-                                One, 
-                                Zero
+                                0x17,
+                                Zero,
+                                One,
+                                Zero,
+                                One,
+                                0x02
                             }
-                        }, 
+                        },
 
                         Package (0x02)
                         {
-                            "TLMMGPIO", 
+                            "TLMMGPIO",
                             Package (0x06)
                             {
-                                0x18, 
-                                Zero, 
-                                0x02, 
-                                Zero, 
-                                One, 
-                                Zero
+                                0x18,
+                                Zero,
+                                One,
+                                Zero,
+                                One,
+                                0x02
                             }
-                        }, 
+                        },
 
                         Package (0x02)
                         {
-                            "TLMMGPIO", 
+                            "TLMMGPIO",
                             Package (0x06)
                             {
-                                0x19, 
-                                Zero, 
-                                0x02, 
-                                Zero, 
-                                One, 
-                                Zero
+                                0x19,
+                                Zero,
+                                One,
+                                Zero,
+                                One,
+                                0x02
                             }
-                        }, 
+                        },
 
                         Package (0x02)
                         {
-                            "TLMMGPIO", 
+                            "TLMMGPIO",
                             Package (0x06)
                             {
-                                0x1A, 
-                                Zero, 
-                                0x02, 
-                                Zero, 
-                                One, 
-                                Zero
+                                0x1A,
+                                Zero,
+                                One,
+                                Zero,
+                                One,
+                                0x02
                             }
                         }
                     }
