@@ -84186,10 +84186,20 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             })
             Name (PBUP, ResourceTemplate ()
             {
-                UartSerialBusV2 (0x0001C200, DataBitsEight, StopBitsOne,
-                    0xC0, LittleEndian, ParityTypeNone, FlowControlHardware,
-                    0x0020, 0x0020, "\\_SB.UR18",
-                    0x00, ResourceConsumer, , Exclusive,
+                UARTSerialBus(
+                    115200,                    // ConnectionSpeed
+                    DataBitsEight,             // BitsPerByte         (defaults to DataBitsEight)
+                    StopBitsOne,               // StopBits            (defaults to StopBitsOne)
+                    0xC0,                      // LinesInUse
+                    LittleEndian,              // IsBigEndian         (defaults to LittleEndian)
+                    ParityTypeNone,            // Parity              (defaults to ParityTypeNone)
+                    FlowControlHardware,       // FlowControl         (defaults to FlowControlNone)
+                    0x20,                      // ReceiveBufferSize
+                    0x20,                      // TransmitBufferSize
+                    "\\_SB.UR18",              // depends on UART ACPI definition
+                    0,                         // ResourceSourceIndex (defaults to 0)
+                    ResourceConsumer,          // ResourceUsage       (defaults to ResourceConsumer)
+                    ,                          // DescriptorName
                     )
             })
             Method (_STA, 0, NotSerialized)  // _STA: Status
