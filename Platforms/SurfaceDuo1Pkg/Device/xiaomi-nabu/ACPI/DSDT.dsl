@@ -3784,7 +3784,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                             {
                                 "FSTATE", 
                                 One, 
-                                Package (0x0F)
+                                Package (0x0E)
                                 {
                                     "ENTER", 
                                     Package (0x02)
@@ -3931,17 +3931,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
 
                                     Package (0x02)
                                     {
-                                        "PMICWLED", 
-                                        Package (0x03)
-                                        {
-                                            "IOCTL_PM_WLED_MODULE_ENABLE", 
-                                            0x02, 
-                                            Zero
-                                        }
-                                    }, 
-
-                                    Package (0x02)
-                                    {
                                         "TLMMGPIO", 
                                         Package (0x06)
                                         {
@@ -3955,7 +3944,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                                     }
                                 }, 
 
-                                Package (0x0D)
+                                Package (0x0C)
                                 {
                                     "EXIT", 
                                     Package (0x02)
@@ -4077,17 +4066,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                                             Zero, 
                                             "HLOS_DRV", 
                                             "REQUIRED"
-                                        }
-                                    }, 
-//WLED Not needed?
-                                    Package (0x02)
-                                    {
-                                        "PMICWLED", 
-                                        Package (0x03)
-                                        {
-                                            "IOCTL_PM_WLED_MODULE_ENABLE", 
-                                            0x02, 
-                                            One
                                         }
                                     }, 
 
@@ -63089,12 +63067,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                         "\\_SB.GIO0", 0x00, ResourceConsumer, ,
                         )
                         {   // Pin list
-                            0x0007
-                        }
-                    GpioIo (Exclusive, PullUp, 0x0000, 0x0000, IoRestrictionNone,
-                        "\\_SB.GIO0", 0x00, ResourceConsumer, ,
-                        )
-                        {   // Pin list
                             0x0006
                         }
                 })
@@ -63156,12 +63128,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                         "\\_SB.GIO0", 0x00, ResourceConsumer, ,
                         )
                         {   // Pin list
-                            0x0007
-                        }
-                    GpioIo (Exclusive, PullUp, 0x0000, 0x0000, IoRestrictionNone,
-                        "\\_SB.GIO0", 0x00, ResourceConsumer, ,
-                        )
-                        {   // Pin list
                             0x0006
                         }
                 })
@@ -63177,7 +63143,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
 
             Method (RESI, 0, NotSerialized)
             {
-                Name (AINF, Package (0x11)
+                Name (AINF, Package (0x10)
                 {
                     0x03, 
                     Zero, 
@@ -63276,17 +63242,10 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                     {
                         "RESOURCE", 
                         "DSI_PANEL_RESET", 
-                        "DISPLAY"
-                    }, 
-
-                    Package (0x03)
-                    {
-                        "RESOURCE", 
-                        "DSI_PANEL_MODE_SELECT", 
                         "DISPLAY"
                     }
                 })
-                Name (BINF, Package (0x11)
+                Name (BINF, Package (0x10)
                 {
                     0x03, 
                     Zero, 
@@ -63385,13 +63344,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                     {
                         "RESOURCE", 
                         "DSI_PANEL_RESET", 
-                        "DISPLAY"
-                    }, 
-
-                    Package (0x03)
-                    {
-                        "RESOURCE", 
-                        "DSI_PANEL_MODE_SELECT", 
                         "DISPLAY"
                     }
                 })
