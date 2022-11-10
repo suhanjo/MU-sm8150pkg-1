@@ -60164,54 +60164,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 Return (RBUF) /* \_SB_.I2C1._CRS.RBUF */
             }
         }
-        
-        Scope (\_SB.I2C1)
-        {
-            Name (ECOK, Zero)
-            Mutex (MUT0, 0x00)
-            Name (BLEN, Zero)
-            Name (ECI2, ResourceTemplate ()
-            {
-                I2CSerialBus(
-                    0x11,                  // SlaveAddress: placeholder
-                    ,                      // SlaveMode: default to ControllerInitiated
-                    400000,                // ConnectionSpeed: in Hz
-                    ,                      // Addressing Mode: default to 7 bit
-                    "\\_SB.I2C1",          // ResourceSource: I2C bus controller name
-                    ,
-                    ,
-                    ) 
-            })
-            OperationRegion (ECFD, GenericSerialBus, Zero, 0x0100)
-            Field (ECFD, BufferAcc, NoLock, Preserve)
-            {
-                Connection (ECI2), 
-                Offset (0x05), 
-                AccessAs (BufferAcc, AttribByte), 
-                CM05,   8,
-                Offset (0x08), 
-                AccessAs (BufferAcc, AttribByte), 
-                CM08,   8
-            }
-            Name (BUFF, Buffer (0x03)
-            {
-                 0x00, 0x01, 0x00
-            })
-            CreateByteField (BUFF, Zero, BYAT)
-            CreateByteField (BUFF, 0x02, DATA)
-            
-            Method (_REG, 2, NotSerialized)  // _REG: Region Availability
-            {
-                If ((Arg1 == One))
-                {
-                    ECOK = One
-                }
-                Else
-                {
-                    ECOK = Zero
-                }
-            }
-        }
 
         Device (I2C5)
         {
@@ -63069,6 +63021,15 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                         {   // Pin list
                             0x0006
                         }
+                    I2CSerialBus(
+                        0x11,                  // SlaveAddress: placeholder
+                        ,                      // SlaveMode: default to ControllerInitiated
+                        400000,                // ConnectionSpeed: in Hz
+                        ,                      // Addressing Mode: default to 7 bit
+                        "\\_SB.I2C1",          // ResourceSource: I2C bus controller name
+                        ,
+                        ,
+                        ) 
                 })
                 Name (BBUF, ResourceTemplate ()
                 {
@@ -63130,6 +63091,15 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                         {   // Pin list
                             0x0006
                         }
+                    I2CSerialBus(
+                        0x11,                  // SlaveAddress: placeholder
+                        ,                      // SlaveMode: default to ControllerInitiated
+                        400000,                // ConnectionSpeed: in Hz
+                        ,                      // Addressing Mode: default to 7 bit
+                        "\\_SB.I2C1",          // ResourceSource: I2C bus controller name
+                        ,
+                        ,
+                        ) 
                 })
                 If ((\_SB.SIDV < 0x00020000))
                 {
@@ -63143,7 +63113,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
 
             Method (RESI, 0, NotSerialized)
             {
-                Name (AINF, Package (0x10)
+                Name (AINF, Package (0x11)
                 {
                     0x03, 
                     Zero, 
@@ -63242,10 +63212,17 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                     {
                         "RESOURCE", 
                         "DSI_PANEL_RESET", 
+                        "DISPLAY"
+                    },
+                    
+                    Package (0x03)
+                    {
+                        "RESOURCE", 
+                        "I2C_BACKLIGHT", 
                         "DISPLAY"
                     }
                 })
-                Name (BINF, Package (0x10)
+                Name (BINF, Package (0x11)
                 {
                     0x03, 
                     Zero, 
@@ -63344,6 +63321,13 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                     {
                         "RESOURCE", 
                         "DSI_PANEL_RESET", 
+                        "DISPLAY"
+                    },
+
+                    Package (0x03)
+                    {
+                        "RESOURCE", 
+                        "I2C_BACKLIGHT", 
                         "DISPLAY"
                     }
                 })
@@ -74273,7 +74257,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
 
             Method (_ROM, 3, NotSerialized)  // _ROM: Read-Only Memory
             {
-                Name (PCFG, Buffer (0x1794)
+                Name (PCFG, Buffer (0x17FD)
                 {
                     /* 0000 */  0x3C, 0x3F, 0x78, 0x6D, 0x6C, 0x20, 0x76, 0x65,  // <?xml ve
                     /* 0008 */  0x72, 0x73, 0x69, 0x6F, 0x6E, 0x3D, 0x22, 0x31,  // rsion="1
@@ -74999,7 +74983,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                     /* 1688 */  0x6F, 0x6E, 0x66, 0x69, 0x67, 0x75, 0x72, 0x61,  // onfigura
                     /* 1690 */  0x74, 0x69, 0x6F, 0x6E, 0x27, 0x3E, 0x0A, 0x20,  // tion'>. 
                     /* 1698 */  0x3C, 0x42, 0x61, 0x63, 0x6B, 0x6C, 0x69, 0x67,  // <Backlig
-                    /* 16A0 */  0x68, 0x74, 0x54, 0x79, 0x70, 0x65, 0x3E, 0x33,  // htType>3
+                    /* 16A0 */  0x68, 0x74, 0x54, 0x79, 0x70, 0x65, 0x3E, 0x32,  // htType>2
                     /* 16A8 */  0x3C, 0x2F, 0x42, 0x61, 0x63, 0x6B, 0x6C, 0x69,  // </Backli
                     /* 16B0 */  0x67, 0x68, 0x74, 0x54, 0x79, 0x70, 0x65, 0x3E,  // ghtType>
                     /* 16B8 */  0x0A, 0x20, 0x3C, 0x42, 0x61, 0x63, 0x6B, 0x6C,  // . <Backl
@@ -75029,7 +75013,20 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                     /* 1778 */  0x2F, 0x44, 0x69, 0x73, 0x70, 0x6C, 0x61, 0x79,  // /Display
                     /* 1780 */  0x52, 0x65, 0x73, 0x65, 0x74, 0x49, 0x6E, 0x66,  // ResetInf
                     /* 1788 */  0x6F, 0x3E, 0x0A, 0x3C, 0x2F, 0x47, 0x72, 0x6F,  // o>.</Gro
-                    /* 1790 */  0x75, 0x70, 0x3E, 0x0A                           // up>.
+                    /* 1790 */  0x75, 0x70, 0x3E, 0x0A, 0x3C, 0x47, 0x72, 0x6F,  // up>.<Gro
+                    /* 1798 */  0x75, 0x70, 0x20, 0x69, 0x64, 0x3D, 0x27, 0x43,  // up id='C
+                    /* 17A0 */  0x6F, 0x6E, 0x6E, 0x65, 0x63, 0x74, 0x69, 0x6F,  // onnectio
+                    /* 17A8 */  0x6E, 0x20, 0x43, 0x6F, 0x6E, 0x66, 0x69, 0x67,  // n Config
+                    /* 17B0 */  0x75, 0x72, 0x61, 0x74, 0x69, 0x6F, 0x6E, 0x27,  // uration'
+                    /* 17B8 */  0x3E, 0x20, 0x0A, 0x20, 0x20, 0x20, 0x20, 0x3C,  // > .    <
+                    /* 17C0 */  0x44, 0x69, 0x73, 0x70, 0x6C, 0x61, 0x79, 0x31,  // Display1
+                    /* 17C8 */  0x49, 0x32, 0x43, 0x31, 0x49, 0x6E, 0x66, 0x6F,  // I2C1Info
+                    /* 17D0 */  0x3E, 0x49, 0x32, 0x43, 0x5F, 0x42, 0x41, 0x43,  // >I2C_BAC
+                    /* 17D8 */  0x4B, 0x4C, 0x49, 0x47, 0x48, 0x54, 0x2C, 0x31,  // KLIGHT,1
+                    /* 17E0 */  0x3C, 0x2F, 0x44, 0x69, 0x73, 0x70, 0x6C, 0x61,  // </Displa
+                    /* 17E8 */  0x79, 0x31, 0x49, 0x32, 0x43, 0x31, 0x49, 0x6E,  // y1I2C1In
+                    /* 17F0 */  0x66, 0x6F, 0x3E, 0x0A, 0x3C, 0x2F, 0x47, 0x72,  // fo>.</Gr
+                    /* 17F8 */  0x6F, 0x75, 0x70, 0x3E, 0x0A                     // oup>.
                 })
                 While (One)
                 {
@@ -75270,31 +75267,40 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
 
             Method (BLCP, 1, NotSerialized)
             {
-                Name (RBUF, Buffer (0x0100){})
-                If ((\_SB.I2C1.ECOK == One))
+                Name (RBUF, Buffer (0x100){})
+                Store(0x0, LOCAL0)
+                CreateField(RBUF, Multiply(LOCAL0, 8), 16, PKHR)
+                Add(LOCAL0, 4, LOCAL0)
+                CreateField(RBUF, Multiply(LOCAL0, 8), 16, PKPL)
+
+                If (LEqual(Arg0, 0))
                 {
-                    Acquire (\_SB.I2C1.MUT0, 0xFFFF)
-                    \_SB.I2C1.BYAT = Zero
-                    \_SB.I2C1.DATA = Arg0 * 0xFF / 0x64
-                    \_SB.I2C1.CM05 = \_SB.I2C1.BUFF
-                    
-                    If (\_SB.I2C1.BLEN == 0 && Arg0 > 0)
-                    {
-                        \_SB.I2C1.BYAT = Zero
-                        \_SB.I2C1.DATA = 0x5f
-                        \_SB.I2C1.CM08 = \_SB.I2C1.BUFF
-                        \_SB.I2C1.BLEN = One
-                    }
-                    ElseIf (Arg0 == 0)
-                    {
-                        \_SB.I2C1.BYAT = Zero
-                        \_SB.I2C1.DATA = 0x1f
-                        \_SB.I2C1.CM08 = \_SB.I2C1.BUFF
-                        \_SB.I2C1.BLEN = Zero
-                    }
-                    
-                    Release (\_SB.I2C1.MUT0)
+                    Name(BOFF, Buffer() { 0x08, 0x1F })
+                    Store(SizeOf(BOFF), PKHR)
+                    Store(BOFF, PKPL)
+                    Add(LOCAL0, SizeOf(BOFF), LOCAL0)
                 }
+                Else
+                {
+                    Name (BLAX, Buffer() { 0x05, 0xFF })
+                    CreateByteField (BLAX, 0x01, BLCH)
+                    BLCH = Arg0 * 0xFF / 0x64
+                    Store(SizeOf(BLAX), PKHR)
+                    Store(BLAX, PKPL)
+                    Add(LOCAL0, SizeOf(BLAX), LOCAL0)
+
+                    Name(BON, Buffer() { 0x08, 0x5F })
+
+                    CreateField(RBUF, Multiply(LOCAL0, 8), 16, PKH2)
+                    Add(LOCAL0, 4, LOCAL0)
+                    CreateField(RBUF, Multiply(LOCAL0, 8), 16, PKP2)
+
+                    Store(SizeOf(BON), PKH2)
+                    Store(BON, PKP2)
+                    Add(LOCAL0, SizeOf(BON), LOCAL0)
+                }
+                CreateDWordField(RBUF, Multiply(LOCAL0, 8), EOP)
+                Store(0x0, EOP)
                 Return (RBUF) /* \_SB_.GPU0.BLCP.RBUF */
             }
 
