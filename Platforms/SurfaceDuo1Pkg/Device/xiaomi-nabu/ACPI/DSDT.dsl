@@ -75265,7 +75265,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 Return (RBUF) /* \_SB_.GPU0.DITH.RBUF */
             }
 
-            Method (BLCP, 1, NotSerialized)
+            Method (BLCP, 2, NotSerialized)
             {
                 Name (RBUF, Buffer (0x100){})
                 Store(0x0, LOCAL0)
@@ -75284,7 +75284,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 {
                     Name (BLAX, Buffer() { 0x05, 0xFF })
                     CreateByteField (BLAX, 0x01, BLCH)
-                    BLCH = Arg0 * 0xFF / 0x64
+                    BLCH = Arg0 * 0xFF / 0xFFFF
                     Store(SizeOf(BLAX), PKHR)
                     Store(BLAX, PKPL)
                     Add(LOCAL0, SizeOf(BLAX), LOCAL0)
