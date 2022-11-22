@@ -5,13 +5,13 @@
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of DSDT_8150_MTP_PAD_5.aml, Tue Nov 22 15:20:12 2022
+ * Disassembly of DSDT_8150_MTP_PAD_5.aml, Tue Nov 22 21:23:37 2022
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x0005DFAB (384939)
+ *     Length           0x0005DFBD (384957)
  *     Revision         0x02
- *     Checksum         0x4D
+ *     Checksum         0x97
  *     OEM ID           "QCOMM "
  *     OEM Table ID     "SDM8150 "
  *     OEM Revision     0x00000003 (3)
@@ -50,19 +50,11 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
     External (_SB_.TZ41.TTSP, UnknownObj)
     External (BREV, UnknownObj)
     External (BSID, UnknownObj)
-    External (CCC1, IntObj)
-    External (FCC1, IntObj)
-    External (FVC1, IntObj)
-    External (HCLI, IntObj)
-    External (HHLI, IntObj)
     External (PCF1, IntObj)
     External (PCF2, IntObj)
     External (PCF3, IntObj)
     External (PCF4, IntObj)
     External (PCF5, IntObj)
-    External (SCLI, IntObj)
-    External (SHLI, IntObj)
-    External (VDD1, IntObj)
 
     Scope (\_SB)
     {
@@ -426,34 +418,28 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             }
         }
 
-        Name (BFCC, 0x2CEC)
+        Name (BFCC, 0x83D2)
         Name (PCT1, 0x05)
         Name (PCT2, 0x09)
         Name (CUST, "8996_MTP")
-        Name (VNOM, 0x0ED8)
+        Name (VNOM, 0x0F1E)
         Name (VLOW, 0x0DAC)
         Name (EMPT, 0x0D48)
         Name (DCMA, 0x0384)
         Name (BOCP, 0x1194)
-        Name (BVLO, 0x0BB8)
+        Name (BVLO, 0x0C1C)
         Name (BLOP, 0x14)
         Name (BNOP, 0x16)
         Name (IFGD, 0x32)
         Name (VFGD, 0x32)
-        Name (VZO2, 0x10FE)
-        Name (IZO2, 0x0834)
-        Name (TMIN, Zero)
-        Name (TMAX, 0x3C)
-        Name (NZON, 0x04)
-        Name (VZO1, 0x10FE)
-        Name (IZO1, 0x03E8)
-        Name (TZO1, 0x0A)
-        Name (VZO3, 0x1090)
-        Name (IZO3, 0x0834)
-        Name (TZO3, 0x2D)
-        Name (VZO4, 0x1054)
-        Name (IZO4, 0x0834)
-        Name (TZO4, 0x32)
+        Name (VDD1, 0x10FE)
+        Name (FCC1, 0x0834)
+        Name (HCLI, Zero)
+        Name (SCLI, 0x0A)
+        Name (SHLI, 0x2D)
+        Name (HHLI, 0x37)
+        Name (FVC1, 0x69)
+        Name (CCC1, 0x03E8)
         Name (RID2, 0x3A98)
         Name (RID3, 0x000222E0)
         Device (PMBT)
@@ -588,7 +574,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             {
                 Name (CFG0, Package (0x03)
                 {
-                    One, 
+                    Zero, 
                     Zero, 
                     Zero
                 })
@@ -731,14 +717,14 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                         Zero
                     }
                 })
-                \_SB.PMBT.BCT1 [Zero] = VDD1 /* External reference */
-                \_SB.PMBT.BCT1 [One] = FCC1 /* External reference */
-                \_SB.PMBT.BCT1 [0x02] = HCLI /* External reference */
-                \_SB.PMBT.BCT1 [0x03] = SCLI /* External reference */
-                \_SB.PMBT.BCT1 [0x04] = SHLI /* External reference */
-                \_SB.PMBT.BCT1 [0x05] = HHLI /* External reference */
-                \_SB.PMBT.BCT1 [0x06] = FVC1 /* External reference */
-                \_SB.PMBT.BCT1 [0x09] = CCC1 /* External reference */
+                \_SB.PMBT.BCT1 [Zero] = VDD1 /* \_SB_.VDD1 */
+                \_SB.PMBT.BCT1 [One] = FCC1 /* \_SB_.FCC1 */
+                \_SB.PMBT.BCT1 [0x02] = HCLI /* \_SB_.HCLI */
+                \_SB.PMBT.BCT1 [0x03] = SCLI /* \_SB_.SCLI */
+                \_SB.PMBT.BCT1 [0x04] = SHLI /* \_SB_.SHLI */
+                \_SB.PMBT.BCT1 [0x05] = HHLI /* \_SB_.HHLI */
+                \_SB.PMBT.BCT1 [0x06] = FVC1 /* \_SB_.FVC1 */
+                \_SB.PMBT.BCT1 [0x09] = CCC1 /* \_SB_.CCC1 */
                 CFG0 [0x02] = \_SB.PMBT.BCT1
                 Return (CFG0) /* \_SB_.PMBT.BJTA.CFG0 */
             }
@@ -1030,6 +1016,17 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 \_SB.PMIC
             })
             Name (_HID, "QCOM05CE")  // _HID: Hardware ID
+            Alias (\_SB.PSUB, _SUB)
+        }
+
+        Device (PCFG)
+        {
+            Name (_DEP, Package (0x02)  // _DEP: Dependencies
+            {
+                \_SB.PMIC, 
+                \_SB.SPMI
+            })
+            Name (_HID, "QCOM0580")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
         }
 
