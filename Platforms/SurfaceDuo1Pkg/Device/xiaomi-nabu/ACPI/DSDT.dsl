@@ -5,13 +5,13 @@
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of DSDT_8150_MTP_PAD_5.aml, Tue Nov 22 21:23:37 2022
+ * Disassembly of DSDT_8150_MTP_PAD_5.aml, Fri Nov 25 21:38:53 2022
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x0005DFBD (384957)
+ *     Length           0x0005DFC7 (384967)
  *     Revision         0x02
- *     Checksum         0x97
+ *     Checksum         0x34
  *     OEM ID           "QCOMM "
  *     OEM Table ID     "SDM8150 "
  *     OEM Revision     0x00000003 (3)
@@ -416,6 +416,17 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
 
                 Return (Zero)
             }
+        }
+
+        Device (PEXT)
+        {
+            Name (_DEP, Package (0x02)  // _DEP: Dependencies
+            {
+                \_SB.SPMI, 
+                \_SB.PMIC
+            })
+            Name (_HID, "QCOM05CE")  // _HID: Hardware ID
+            Alias (\_SB.PSUB, _SUB)
         }
 
         Name (BFCC, 0x83D2)
@@ -932,7 +943,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             Alias (\_SB.PSUB, _SUB)
             Name (_DEP, Package (One)  // _DEP: Dependencies
             {
-                \_SB.PCPD
+                \_SB.PEXT
             })
             Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
             {
@@ -1007,16 +1018,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 })
                 Return (RBUF) /* \_SB_.PTCC._CRS.RBUF */
             }
-        }
-
-        Device (PCPD)
-        {
-            Name (_DEP, Package (One)  // _DEP: Dependencies
-            {
-                \_SB.PMIC
-            })
-            Name (_HID, "QCOM05CE")  // _HID: Hardware ID
-            Alias (\_SB.PSUB, _SUB)
         }
 
         Device (PCFG)
