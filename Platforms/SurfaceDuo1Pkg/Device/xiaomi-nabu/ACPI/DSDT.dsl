@@ -5,13 +5,13 @@
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of DSDT_8150_MTP_PAD_5.aml, Sun Dec 11 14:44:04 2022
+ * Disassembly of DSDT_8150_MTP_PAD_5.aml, Mon Jan 23 14:22:51 2023
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x0005DFAC (384940)
+ *     Length           0x0005E885 (387205)
  *     Revision         0x02
- *     Checksum         0x4A
+ *     Checksum         0xA7
  *     OEM ID           "QCOMM "
  *     OEM Table ID     "SDM8150 "
  *     OEM Revision     0x00000003 (3)
@@ -3524,16 +3524,126 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                     {
                         "COMPONENT", 
                         0x0D, 
-                        Package (0x02)
+                        Package (0x06)
                         {
                             "FSTATE", 
-                            Zero
+                            Zero, 
+                            Package (0x02)
+                            {
+                                "TLMMGPIO", 
+                                Package (0x06)
+                                {
+                                    0x89, 
+                                    One, 
+                                    One, 
+                                    One, 
+                                    One, 
+                                    0x03
+                                }
+                            }, 
+
+                            Package (0x02)
+                            {
+                                "TLMMGPIO", 
+                                Package (0x06)
+                                {
+                                    0x8A, 
+                                    One, 
+                                    One, 
+                                    One, 
+                                    One, 
+                                    0x03
+                                }
+                            }, 
+
+                            Package (0x02)
+                            {
+                                "TLMMGPIO", 
+                                Package (0x06)
+                                {
+                                    0x8B, 
+                                    One, 
+                                    One, 
+                                    One, 
+                                    One, 
+                                    0x03
+                                }
+                            }, 
+
+                            Package (0x02)
+                            {
+                                "TLMMGPIO", 
+                                Package (0x06)
+                                {
+                                    0x8C, 
+                                    One, 
+                                    One, 
+                                    One, 
+                                    One, 
+                                    0x03
+                                }
+                            }
                         }, 
 
-                        Package (0x02)
+                        Package (0x06)
                         {
                             "FSTATE", 
-                            One
+                            One, 
+                            Package (0x02)
+                            {
+                                "TLMMGPIO", 
+                                Package (0x06)
+                                {
+                                    0x89, 
+                                    Zero, 
+                                    Zero, 
+                                    Zero, 
+                                    One, 
+                                    Zero
+                                }
+                            }, 
+
+                            Package (0x02)
+                            {
+                                "TLMMGPIO", 
+                                Package (0x06)
+                                {
+                                    0x8A, 
+                                    Zero, 
+                                    Zero, 
+                                    Zero, 
+                                    One, 
+                                    Zero
+                                }
+                            }, 
+
+                            Package (0x02)
+                            {
+                                "TLMMGPIO", 
+                                Package (0x06)
+                                {
+                                    0x8B, 
+                                    Zero, 
+                                    Zero, 
+                                    Zero, 
+                                    One, 
+                                    Zero
+                                }
+                            }, 
+
+                            Package (0x02)
+                            {
+                                "TLMMGPIO", 
+                                Package (0x06)
+                                {
+                                    0x8C, 
+                                    Zero, 
+                                    Zero, 
+                                    Zero, 
+                                    One, 
+                                    Zero
+                                }
+                            }
                         }
                     }, 
 
@@ -38795,7 +38905,308 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 Return (OPCC) /* \_SB_.PEP0.OPCC */
             }
 
-            Name (OPCC, Package (0x00){})
+            Name (OPCC, Package (0x04)
+            {
+                Package (0x04)
+                {
+                    "DEVICE", 
+                    "\\_SB.ADSP.SLM1.ADCM.AUDD.CSL1", 
+                    Package (0x06)
+                    {
+                        "DSTATE", 
+                        Zero, 
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                Zero, 
+                                Zero, 
+                                One, 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "DELAY", 
+                            Package (0x01)
+                            {
+                                0x02
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                One, 
+                                Zero, 
+                                One, 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "DELAY", 
+                            Package (0x01)
+                            {
+                                0x02
+                            }
+                        }
+                    }, 
+
+                    Package (0x03)
+                    {
+                        "DSTATE", 
+                        0x03, 
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                Zero, 
+                                Zero, 
+                                Zero, 
+                                Zero, 
+                                Zero
+                            }
+                        }
+                    }
+                }, 
+
+                Package (0x04)
+                {
+                    "DEVICE", 
+                    "\\_SB.ADSP.SLM1.ADCM.AUDD.CSL2", 
+                    Package (0x06)
+                    {
+                        "DSTATE", 
+                        Zero, 
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                Zero, 
+                                Zero, 
+                                One, 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "DELAY", 
+                            Package (0x01)
+                            {
+                                0x02
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                One, 
+                                Zero, 
+                                One, 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "DELAY", 
+                            Package (0x01)
+                            {
+                                0x02
+                            }
+                        }
+                    }, 
+
+                    Package (0x03)
+                    {
+                        "DSTATE", 
+                        0x03, 
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                Zero, 
+                                Zero, 
+                                Zero, 
+                                Zero, 
+                                Zero
+                            }
+                        }
+                    }
+                }, 
+
+                Package (0x04)
+                {
+                    "DEVICE", 
+                    "\\_SB.ADSP.SLM1.ADCM.AUDD.CSL3", 
+                    Package (0x06)
+                    {
+                        "DSTATE", 
+                        Zero, 
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                Zero, 
+                                Zero, 
+                                One, 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "DELAY", 
+                            Package (0x01)
+                            {
+                                0x02
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                One, 
+                                Zero, 
+                                One, 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "DELAY", 
+                            Package (0x01)
+                            {
+                                0x02
+                            }
+                        }
+                    }, 
+
+                    Package (0x03)
+                    {
+                        "DSTATE", 
+                        0x03, 
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                Zero, 
+                                Zero, 
+                                Zero, 
+                                Zero, 
+                                Zero
+                            }
+                        }
+                    }
+                }, 
+
+                Package (0x04)
+                {
+                    "DEVICE", 
+                    "\\_SB.ADSP.SLM1.ADCM.AUDD.CSL4", 
+                    Package (0x06)
+                    {
+                        "DSTATE", 
+                        Zero, 
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                Zero, 
+                                Zero, 
+                                One, 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "DELAY", 
+                            Package (0x01)
+                            {
+                                0x02
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                One, 
+                                Zero, 
+                                One, 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "DELAY", 
+                            Package (0x01)
+                            {
+                                0x02
+                            }
+                        }
+                    }, 
+
+                    Package (0x03)
+                    {
+                        "DSTATE", 
+                        0x03, 
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x5C, 
+                                Zero, 
+                                Zero, 
+                                Zero, 
+                                Zero, 
+                                Zero
+                            }
+                        }
+                    }
+                }
+            })
         }
 
         Scope (\_SB.PEP0)
@@ -69958,6 +70369,33 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             }
         }
 
+        Device (I2C8)
+        {
+            Name (_HID, "QCOM0511")  // _HID: Hardware ID
+            Alias (\_SB.PSUB, _SUB)
+            Name (_UID, 0x08)  // _UID: Unique ID
+            Name (_DEP, Package (0x01)  // _DEP: Dependencies
+            {
+                \_SB.PEP0
+            })
+            Name (_CCA, Zero)  // _CCA: Cache Coherency Attribute
+            Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+            {
+                Name (RBUF, ResourceTemplate ()
+                {
+                    Memory32Fixed (ReadWrite,
+                        0x0089C000,         // Address Base
+                        0x00004000,         // Address Length
+                        )
+                    Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                    {
+                        0x00000280,
+                    }
+                })
+                Return (RBUF) /* \_SB_.I2C8._CRS.RBUF */
+            }
+        }
+
         Device (SP19)
         {
             Name (_HID, "QCOM050F")  // _HID: Hardware ID
@@ -69994,7 +70432,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                 Return (BSRC) /* \_SB_.PEP0.BSRC */
             }
 
-            Name (BSRC, Package (0x06)
+            Name (BSRC, Package (0x07)
             {
                 Package (0x05)
                 {
@@ -71217,6 +71655,194 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
                             Package (0x06)
                             {
                                 0x34, 
+                                Zero, 
+                                Zero, 
+                                Zero, 
+                                0x03, 
+                                Zero
+                            }
+                        }
+                    }
+                }, 
+
+                Package (0x07)
+                {
+                    "DEVICE", 
+                    "\\_SB.I2C8", 
+                    Package (0x03)
+                    {
+                        "COMPONENT", 
+                        Zero, 
+                        Package (0x02)
+                        {
+                            "FSTATE", 
+                            Zero
+                        }
+                    }, 
+
+                    Package (0x08)
+                    {
+                        "DSTATE", 
+                        Zero, 
+                        Package (0x02)
+                        {
+                            "BUSARB", 
+                            Package (0x05)
+                            {
+                                0x03, 
+                                "ICBID_MASTER_QUP_0", 
+                                "ICBID_SLAVE_EBI1", 
+                                0x0927C000, 
+                                0x0682
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "BUSARB", 
+                            Package (0x05)
+                            {
+                                0x03, 
+                                "ICBID_MASTER_APPSS_PROC", 
+                                "ICBID_SLAVE_QUP_0", 
+                                0x08D24D00, 
+                                0x02FAF080
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "CLOCK", 
+                            Package (0x02)
+                            {
+                                "gcc_qupv3_wrap_0_m_ahb_clk", 
+                                One
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "CLOCK", 
+                            Package (0x04)
+                            {
+                                "gcc_qupv3_wrap0_s7_clk", 
+                                0x08, 
+                                0x0124F800, 
+                                0x04
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x62, 
+                                One, 
+                                One, 
+                                One, 
+                                0x03, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x63, 
+                                One, 
+                                One, 
+                                One, 
+                                0x03, 
+                                Zero
+                            }
+                        }
+                    }, 
+
+                    Package (0x02)
+                    {
+                        "DSTATE", 
+                        One
+                    }, 
+
+                    Package (0x02)
+                    {
+                        "DSTATE", 
+                        0x02
+                    }, 
+
+                    Package (0x08)
+                    {
+                        "DSTATE", 
+                        0x03, 
+                        Package (0x02)
+                        {
+                            "CLOCK", 
+                            Package (0x02)
+                            {
+                                "gcc_qupv3_wrap0_s7_clk", 
+                                0x02
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "CLOCK", 
+                            Package (0x02)
+                            {
+                                "gcc_qupv3_wrap_0_m_ahb_clk", 
+                                0x02
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "BUSARB", 
+                            Package (0x05)
+                            {
+                                0x03, 
+                                "ICBID_MASTER_APPSS_PROC", 
+                                "ICBID_SLAVE_QUP_0", 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "BUSARB", 
+                            Package (0x05)
+                            {
+                                0x03, 
+                                "ICBID_MASTER_QUP_0", 
+                                "ICBID_SLAVE_EBI1", 
+                                Zero, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x62, 
+                                Zero, 
+                                Zero, 
+                                Zero, 
+                                0x03, 
+                                Zero
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "TLMMGPIO", 
+                            Package (0x06)
+                            {
+                                0x63, 
                                 Zero, 
                                 Zero, 
                                 Zero, 
@@ -87555,6 +88181,125 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM8150 ", 0x00000003)
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
                 Return (0x0B)
+            }
+        }
+
+        Scope (\_SB.ADSP.SLM1.ADCM.AUDD)
+        {
+            Device (CSL1)
+            {
+                Name (_HID, "10133541")  // _HID: Hardware ID
+                Name (_UID, Zero)  // _UID: Unique ID
+                Alias (\_SB.PSUB, _SUB)
+                Name (_DEP, Package (0x02)  // _DEP: Dependencies
+                {
+                    \_SB.GIO0, 
+                    \_SB.I2C8
+                })
+                Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+                {
+                    Name (RBUF, ResourceTemplate ()
+                    {
+                        I2cSerialBusV2 (0x0040, ControllerInitiated, 0x000186A0,
+                            AddressingMode7Bit, "\\_SB.I2C8",
+                            0x00, ResourceConsumer, , Exclusive,
+                            )
+                        GpioInt (Level, ActiveLow, Exclusive, PullDown, 0x0000,
+                            "\\_SB.GIO0", 0x00, ResourceConsumer, ,
+                            )
+                            {   // Pin list
+                                0x0051
+                            }
+                    })
+                    Return (RBUF) /* \_SB_.ADSP.SLM1.ADCM.AUDD.CSL1._CRS.RBUF */
+                }
+            }
+
+            Device (CSL2)
+            {
+                Name (_HID, "10133541")  // _HID: Hardware ID
+                Name (_UID, One)  // _UID: Unique ID
+                Alias (\_SB.PSUB, _SUB)
+                Name (_DEP, Package (0x02)  // _DEP: Dependencies
+                {
+                    \_SB.GIO0, 
+                    \_SB.I2C8
+                })
+                Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+                {
+                    Name (RBUF, ResourceTemplate ()
+                    {
+                        I2cSerialBusV2 (0x0041, ControllerInitiated, 0x000186A0,
+                            AddressingMode7Bit, "\\_SB.I2C8",
+                            0x00, ResourceConsumer, , Exclusive,
+                            )
+                        GpioInt (Level, ActiveLow, Exclusive, PullDown, 0x0000,
+                            "\\_SB.GIO0", 0x00, ResourceConsumer, ,
+                            )
+                            {   // Pin list
+                                0x005A
+                            }
+                    })
+                    Return (RBUF) /* \_SB_.ADSP.SLM1.ADCM.AUDD.CSL2._CRS.RBUF */
+                }
+            }
+
+            Device (CSL3)
+            {
+                Name (_HID, "10133541")  // _HID: Hardware ID
+                Name (_UID, 0x02)  // _UID: Unique ID
+                Alias (\_SB.PSUB, _SUB)
+                Name (_DEP, Package (0x02)  // _DEP: Dependencies
+                {
+                    \_SB.GIO0, 
+                    \_SB.I2C8
+                })
+                Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+                {
+                    Name (RBUF, ResourceTemplate ()
+                    {
+                        I2cSerialBusV2 (0x0042, ControllerInitiated, 0x000186A0,
+                            AddressingMode7Bit, "\\_SB.I2C8",
+                            0x00, ResourceConsumer, , Exclusive,
+                            )
+                        GpioInt (Level, ActiveLow, Exclusive, PullDown, 0x0000,
+                            "\\_SB.GIO0", 0x00, ResourceConsumer, ,
+                            )
+                            {   // Pin list
+                                0x005B
+                            }
+                    })
+                    Return (RBUF) /* \_SB_.ADSP.SLM1.ADCM.AUDD.CSL3._CRS.RBUF */
+                }
+            }
+
+            Device (CSL4)
+            {
+                Name (_HID, "10133541")  // _HID: Hardware ID
+                Name (_UID, 0x03)  // _UID: Unique ID
+                Alias (\_SB.PSUB, _SUB)
+                Name (_DEP, Package (0x02)  // _DEP: Dependencies
+                {
+                    \_SB.GIO0, 
+                    \_SB.I2C8
+                })
+                Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+                {
+                    Name (RBUF, ResourceTemplate ()
+                    {
+                        I2cSerialBusV2 (0x0043, ControllerInitiated, 0x000186A0,
+                            AddressingMode7Bit, "\\_SB.I2C8",
+                            0x00, ResourceConsumer, , Exclusive,
+                            )
+                        GpioInt (Level, ActiveLow, Exclusive, PullDown, 0x0000,
+                            "\\_SB.GIO0", 0x00, ResourceConsumer, ,
+                            )
+                            {   // Pin list
+                                0x005D
+                            }
+                    })
+                    Return (RBUF) /* \_SB_.ADSP.SLM1.ADCM.AUDD.CSL4._CRS.RBUF */
+                }
             }
         }
 
