@@ -23,10 +23,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: docker build
-        run: docker-compose up
+        run: docker-compose run mu ./run.sh
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
-          name: uefi-images
-          path: Build/*/*.img
+          name: uefi.img
+          path: Build/lg-flashlmdd-AARCH64/uefi.img
